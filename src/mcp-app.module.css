@@ -1,0 +1,102 @@
+.container {
+  display: flex;
+  height: 100vh;
+  background-color: var(--color-background-primary, #fff);
+  color: var(--color-text-primary, #000);
+  font-family: var(--font-sans, system-ui, sans-serif);
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--color-background-secondary, #f9fafb);
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-right: 1px solid var(--color-border-subtle, #e5e7eb);
+}
+
+.intentBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary, #4b5563);
+  font-size: var(--font-text-md-size, 0.95rem);
+  cursor: pointer;
+  border-radius: var(--border-radius-md, 6px);
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.intentBtn:hover {
+  background-color: var(--color-action-hover, #f3f4f6);
+  color: var(--color-text-primary, #111827);
+}
+
+.intentBtn.active {
+  background-color: var(--color-accent-subtle, #eff6ff); 
+  color: var(--color-accent, #2563eb);
+  font-weight: var(--font-weight-semibold, 600);
+}
+
+.content {
+  flex: 1;
+  padding: 2.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.heading {
+  font-size: var(--font-heading-xs-size, 0.75rem);
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--color-text-tertiary, #9ca3af);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.textCard {
+  padding: 0; /* Let text flow freely, or pad if we want a box */
+  font-size: var(--font-text-lg-size, 1.125rem);
+  line-height: var(--font-text-lg-line-height, 1.7);
+  color: var(--color-text-primary, #374151);
+}
+
+.originalSection .textCard {
+    color: var(--color-text-secondary, #6b7280);
+}
+
+.rewriteSection .textCard {
+    color: var(--color-text-primary, #111827);
+    /* Mimic the diff look if we had a diff library, for now just clean text */
+    padding-left: 1rem;
+    border-left: 3px solid var(--color-accent, #2563eb);
+}
+
+.loading, .emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: var(--color-text-secondary, #6b7280);
+  gap: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.hint {
+    font-size: 0.9rem;
+    color: var(--color-text-tertiary, #9ca3af);
+}
+
+.error {
+    color: var(--color-danger, #ef4444);
+    padding: 2rem;
+    text-align: center;
+}
