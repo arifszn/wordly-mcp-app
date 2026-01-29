@@ -1,26 +1,25 @@
-# Wordly MCP App: Text Rewriting and Visualization
+# Wordly MCP App
 
-An MCP App that visualizes rewritten variations of text, grouped by intent, to the user. This app is designed to work with models that provide grammar checks, rewrites, or text improvements.
+An MCP (Model Context Protocol) App that provides an interactive UI for visualizing multiple rewritten variations of text. Perfect for grammar checking, style adjustments, and text improvements with real-time comparison.
 
 ## Features
 
--   **Visualize Rewrites**: Displays an original text alongside various rewritten versions.
--   **Intent-Based Grouping**: Organizes rewritten texts by their intended purpose (e.g., Fluency, Formal, Informal, Sensory).
--   **Interactive Selection**: Allows users to switch between different rewrite intents to view the corresponding text.
--   **Themed UI**: Integrates with the host application's styling for a seamless user experience.
+- **Side-by-Side Comparison**: View original text alongside rewritten variations
+- **Intent-Based Rewrites**: Multiple rewrite styles (Fluency, Formal, Informal, Professional, Conversational, etc.)
+- **One-Click Copy**: Copy any rewritten variation to clipboard with visual feedback
+- **Adaptive Theming**: Seamlessly integrates with host application styles
+- **No Scrolling**: Full content display without scroll bars for optimal readability
+- **Interactive Selection**: Quickly switch between different rewrite intents
+- **Responsive Design**: Works across different screen sizes and contexts
 
-## Usage with MCP Clients
+## Configuration
 
-To use the Wordly MCP App with a compatible Model Context Protocol (MCP) client, such as Claude or another MCP-enabled environment, you typically configure your client to run the `wordly-mcp-app` as a managed server.
-
-### MCP Client Configuration Example
-
-Here's an example of how you might configure your MCP client to automatically launch and connect to the `wordly-mcp-app` server. This configuration would usually reside in a client-specific configuration file (e.g., `.mcp.json` or similar):
+Add to your MCP client configuration:
 
 ```json
 {
   "mcpServers": {
-    "wordly-mcp-app": {
+    "wordly": {
       "command": "npx",
       "args": ["-y", "wordly-mcp-app", "--stdio"]
     }
@@ -28,29 +27,63 @@ Here's an example of how you might configure your MCP client to automatically la
 }
 ```
 
-Once your MCP client is configured and running, it can discover and interact with the `visualize_rewrites` tool provided by this app.
+## How It Works
 
-### Tool Invocation Example
+Once configured, the Wordly MCP App provides a `visualize_rewrites` tool that AI assistants can use to display text rewrites in an interactive UI.
 
-For example, a model might invoke the tool with parameters like:
+### Example Usage
+
+**User**: "Can you rewrite this text in multiple styles: 'thanks for the details you shared'"
+
+**AI Assistant** will call the `visualize_rewrites` tool with:
 
 ```json
 {
-  "tool_code": "visualize_rewrites",
-  "args": {
-    "original_text": "This is a sentence that needs rewriting.",
-    "variations": [
-      {
-        "intent": "Fluency",
-        "text": "This sentence needs some rephrasing."
-      },
-      {
-        "intent": "Formal",
-        "text": "This particular statement requires revision."
-      }
-    ]
-  }
+  "original_text": "thanks for the details you shared",
+  "variations": [
+    {
+      "intent": "Professional & Formal",
+      "text": "Thank you for providing those details."
+    },
+    {
+      "intent": "Clear & Conversational",
+      "text": "Thanks for sharing that information!"
+    },
+    {
+      "intent": "Constructive & Collaborative",
+      "text": "I appreciate you sharing those details with me."
+    },
+    {
+      "intent": "Friendly & Direct",
+      "text": "Thanks for the info!"
+    }
+  ]
 }
 ```
 
-The app will then display an interactive UI within your MCP client to visualize these rewrites.
+The app will then render an interactive UI showing all variations with the ability to:
+- Switch between different rewrite styles
+- Compare original with rewritten text
+- Copy any variation with one click
+
+## API Reference
+
+### Tool: `visualize_rewrites`
+
+Displays rewritten variations of text to the user.
+
+**Input Schema:**
+
+```typescript
+{
+  original_text: string;           // The original text to rewrite
+  variations: Array<{
+    intent: string;                // The rewrite style/intent
+    text: string;                  // The rewritten text
+  }>;
+}
+```
+
+## License
+
+[MIT](LICENSE)

@@ -1,9 +1,31 @@
 {
   "name": "wordly-mcp-app",
-  "version": "1.1.1",
+  "version": "1.2.1",
+  "description": "MCP app for interactive text rewriting and grammar improvement visualization",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "text-rewriting",
+    "grammar",
+    "writing-assistant",
+    "claude",
+    "ai-tools"
+  ],
+  "author": "arifszn",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arifszn/wordly-mcp-app.git"
+  },
+  "homepage": "https://github.com/arifszn/wordly-mcp-app#readme",
+  "bugs": {
+    "url": "https://github.com/arifszn/wordly-mcp-app/issues"
+  },
   "type": "module",
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "bin": {
     "wordly-mcp-app": "dist/server.js"

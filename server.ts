@@ -76,7 +76,16 @@ const server = new McpServer({
 
       return {
         contents: [
-          { uri: resourceUri, mimeType: RESOURCE_MIME_TYPE, text: html },
+          {
+            uri: resourceUri,
+            mimeType: RESOURCE_MIME_TYPE,
+            text: html,
+            _meta: {
+              ui: {
+                permissions: { clipboardWrite: {} },
+              },
+            },
+          },
         ],
       };
     },

@@ -5,15 +5,14 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 1rem;
 }
 
 #root {
-  height: 100%;
   display: flex;
   flex-direction: column;
+  min-height: 100%;
 }
 
 code {

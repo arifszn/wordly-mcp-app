@@ -1,35 +1,36 @@
 .container {
   display: flex;
+  flex-direction: column;
   flex: 1;
-  min-height: 0;
   background-color: var(--color-background-primary, #fff);
   color: var(--color-text-primary, #000);
   font-family: var(--font-sans, system-ui, sans-serif);
 }
 
 .sidebar {
-  width: 250px;
   background-color: var(--color-background-secondary, #f9fafb);
-  padding: 1.5rem 1rem;
+  padding: 0.75rem 1rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 0.5rem;
-  border-right: 1px solid var(--color-border-subtle, #e5e7eb);
+  border-bottom: 1px solid var(--color-border-subtle, #e5e7eb);
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .intentBtn {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
   border: none;
   background: transparent;
   color: var(--color-text-secondary, #4b5563);
-  font-size: var(--font-text-md-size, 0.95rem);
+  font-size: var(--font-text-md-size, 0.875rem);
   cursor: pointer;
   border-radius: var(--border-radius-md, 6px);
-  text-align: left;
   transition: all 0.2s;
+  white-space: nowrap;
 }
 
 .intentBtn:hover {
@@ -38,34 +39,35 @@
 }
 
 .intentBtn.active {
-  background-color: var(--color-accent-subtle, #eff6ff); 
+  background-color: var(--color-accent-subtle, #eff6ff);
   color: var(--color-accent, #2563eb);
-  font-weight: var(--font-weight-semibold, 600);
 }
 
 .content {
   flex: 1;
-  padding: 2.5rem;
-  overflow-y: auto;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 1.5rem;
+  min-width: 0;
 }
 
 .heading {
-  font-size: var(--font-heading-xs-size, 0.75rem);
+  font-size: var(--font-heading-xs-size, 0.7rem);
   font-weight: var(--font-weight-bold, 700);
   color: var(--color-text-tertiary, #9ca3af);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 0.75rem;
+  margin: 0 0 0.5rem 0;
 }
 
 .textCard {
-  padding: 0; /* Let text flow freely, or pad if we want a box */
-  font-size: var(--font-text-lg-size, 1.125rem);
-  line-height: var(--font-text-lg-line-height, 1.7);
+  padding: 0;
+  font-size: var(--font-text-md-size, 0.95rem);
+  line-height: var(--font-text-md-line-height, 1.6);
   color: var(--color-text-primary, #374151);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .originalSection .textCard {
@@ -74,10 +76,11 @@
 
 .rewriteSection .textCard {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     color: var(--color-text-primary, #111827);
-    padding: 1rem;
+    padding: 0.875rem;
     border-left: 3px solid var(--color-accent, #2563eb);
+    gap: 0.75rem;
 }
 
 .loading, .emptyState {
@@ -85,26 +88,32 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  flex: 1;
+  min-height: 200px;
   color: var(--color-text-secondary, #6b7280);
-  gap: 1rem;
-  padding: 2rem;
+  gap: 0.75rem;
+  padding: 1.5rem;
   text-align: center;
+  font-size: 0.9rem;
 }
 
 .hint {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--color-text-tertiary, #9ca3af);
 }
 
 .error {
     color: var(--color-danger, #ef4444);
-    padding: 2rem;
+    padding: 1.5rem;
     text-align: center;
+    font-size: 0.9rem;
 }
 
 .rewrittenText {
-  flex-grow: 1; /* Allow text to take up available space */
+  flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .copyButton {
@@ -113,15 +122,16 @@
   color: var(--color-text-tertiary, #9ca3af);
   padding: 0.25rem;
   cursor: pointer;
-  margin-left: 0.75rem; /* Add some space between text and button */
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--border-radius-sm, 4px);
   transition: all 0.2s ease-in-out;
+  flex-shrink: 0;
 }
 
 .copyButton:hover {
   background-color: var(--color-action-hover, #f3f4f6);
   color: var(--color-text-secondary, #6b7280);
 }
+
