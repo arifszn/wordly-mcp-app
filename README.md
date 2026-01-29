@@ -33,7 +33,7 @@ Once configured, the Wordly MCP App provides a `visualize_rewrites` tool that AI
 
 ### Example Usage
 
-**User**: "Can you rewrite this text in multiple styles: 'thanks for the details you shared'"
+**User**: Rewrite this text in multiple styles: thanks for the details you shared
 
 **AI Assistant** will call the `visualize_rewrites` tool with:
 
