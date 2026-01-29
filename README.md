@@ -2,6 +2,8 @@
 
 An MCP (Model Context Protocol) App that provides an interactive UI for visualizing multiple rewritten variations of text. Perfect for grammar checking, style adjustments, and text improvements with real-time comparison.
 
+<img width="1552" height="925" alt="image" src="https://github.com/user-attachments/assets/9c33fa9e-9661-4bde-a94d-5fa139d8cfef" />
+
 ## Features
 
 - **Side-by-Side Comparison**: View original text alongside rewritten variations
