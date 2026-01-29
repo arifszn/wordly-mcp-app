@@ -39,7 +39,7 @@ const server = new McpServer({
     "visualize_rewrites",
     {
       title: "Visualize Rewrites",
-      description: "Display rewritten variations of text to the user. Use this tool when the user asks for grammar test, checks, rewrites, or improvements. Provide the original text and a list of rewritten variations grouped by intent.",
+      description: "ALWAYS use this tool when the user asks to rewrite text in multiple styles, variations, or tones. Also use for grammar test, checks, rewrites, improvements, or paraphrasing requests. This tool provides an interactive visualization of text variations. Provide the original text and a list of rewritten variations grouped by intent (e.g., Formal, Casual, Professional, Enthusiastic, Concise, etc.).",
       inputSchema: z.object({
         original_text: z.string(),
         variations: z.array(
