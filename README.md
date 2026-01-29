@@ -13,16 +13,16 @@ An MCP App that visualizes rewritten variations of text, grouped by intent, to t
 
 To use the Wordly MCP App with a compatible Model Context Protocol (MCP) client, such as Claude or another MCP-enabled environment, you typically configure your client to run the `wordly-mcp-app` as a managed server.
 
-### Configuration
+### MCP Client Configuration Example
 
-
+Here's an example of how you might configure your MCP client to automatically launch and connect to the `wordly-mcp-app` server. This configuration would usually reside in a client-specific configuration file (e.g., `.mcp.json` or similar):
 
 ```json
 {
   "mcpServers": {
-    "wordly": {
+    "wordly-mcp-app": {
       "command": "npx",
-      "args": ["-y", "wordly-mcp-app"]
+      "args": ["-y", "wordly-mcp-app", "--stdio"]
     }
   }
 }

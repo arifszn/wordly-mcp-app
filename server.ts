@@ -86,7 +86,6 @@ const server = new McpServer({
 if (process.argv.includes("--stdio")) {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.info("Wordly MCP Server running on stdio");
 } else {
   const app = express();
   app.use(cors());
