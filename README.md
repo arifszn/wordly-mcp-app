@@ -9,26 +9,67 @@ An MCP App that visualizes rewritten variations of text, grouped by intent, to t
 -   **Interactive Selection**: Allows users to switch between different rewrite intents to view the corresponding text.
 -   **Themed UI**: Integrates with the host application's styling for a seamless user experience.
 
-## Overview
-
--   Tool registration for `visualize_rewrites` with a linked UI resource.
--   React UI using the `useApp()` hook for communication with the MCP host.
-
-## Key Files
-
--   [`server.ts`](server.ts) - MCP server that registers the `visualize_rewrites` tool and serves the UI resource.
--   [`mcp-app.html`](mcp-app.html) / [`src/mcp-app.tsx`](src/mcp-app.tsx) - The React-based user interface using the `useApp()` hook to receive tool input and render content.
-
 ## Getting Started
 
-To set up and run the application locally:
+### Prerequisites
+
+-   Node.js and npm
+
+### Installation
+
+Clone the repository and install the dependencies:
 
 ```bash
+git clone <repository-url>
+cd wordly-mcp-app
 npm install
+```
+
+## Development
+
+To run the application in a development environment with hot-reloading for both the server and the frontend, use the following command:
+
+```bash
 npm run dev
 ```
 
-This will install dependencies, build the UI, and start the MCP server.
+This starts the server with `tsx` and the Vite build in watch mode, providing the best experience for local development.
+
+## Building for Production
+
+To build the application for production, run:
+
+```bash
+npm run build
+```
+
+This command performs two actions:
+1.  **Builds the UI**: It uses Vite to bundle the React frontend into a single, optimized HTML file located in the `dist` directory.
+2.  **Compiles the Server**: It uses `tsc` to compile the TypeScript server (`server.ts`) into a standard JavaScript file (`dist/server.js`).
+
+After building, you can start the application in a production-like mode with:
+
+```bash
+npm start
+```
+
+This will run the compiled `dist/server.js` file directly with `node`.
+
+## Publishing and Usage
+
+This package is configured to be published to npm.
+
+1.  **Publish**: To publish the package, first ensure you are logged into npm and then run:
+    ```bash
+    npm publish
+    ```
+    The `prepublishOnly` script will automatically run `npm run build` to ensure you are publishing the latest version.
+
+2.  **Usage**: Once published, any user can install and run your application with a single command:
+    ```bash
+    npx wordly-mcp-app
+    ```
+    This will download the package from npm and execute the server, making your MCP App available.
 
 ## How It Works
 

@@ -1,13 +1,21 @@
 {
   "name": "wordly-mcp-app",
   "version": "1.0.0",
-  "private": true,
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "wordly-mcp-app": "dist/server.js"
+  },
   "scripts": {
-    "build": "INPUT=mcp-app.html vite build",
+    "prepublishOnly": "npm run build",
+    "build:ui": "INPUT=mcp-app.html vite build",
+    "build:server": "tsc",
+    "build": "npm run build:ui && npm run build:server",
     "watch": "INPUT=mcp-app.html vite build --watch",
     "serve": "tsx server.ts",
-    "start": "NODE_ENV=development npm run build && npm run serve",
+    "start": "npm run build && node dist/server.js",
     "dev": "NODE_ENV=development concurrently 'npm run watch' 'npm run serve'"
   },
   "dependencies": {

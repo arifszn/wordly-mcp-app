@@ -19,6 +19,7 @@ function GrammarApp() {
 
   const { app, error } = useApp({
     appInfo: { name: "Wordly", version: "1.0.0" },
+    capabilities: {},
     onAppCreated: (app) => {
       app.ontoolinput = (params) => {
         console.log("Received input:", params);

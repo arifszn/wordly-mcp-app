@@ -98,3 +98,6 @@ dist/
 
 # Project specific
 dist/
+
+# Authentication/Config
+.npmrc

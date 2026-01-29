@@ -1,6 +1,7 @@
 .container {
   display: flex;
-  height: 100vh;
+  flex: 1;
+  min-height: 0;
   background-color: var(--color-background-primary, #fff);
   color: var(--color-text-primary, #000);
   font-family: var(--font-sans, system-ui, sans-serif);

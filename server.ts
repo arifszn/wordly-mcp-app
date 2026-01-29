@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
@@ -9,8 +11,21 @@ import path from "node:path";
 import { z } from "zod";
 import { RESOURCE_MIME_TYPE } from "@modelcontextprotocol/ext-apps";
 
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001;
-const DIST_DIR = path.join(import.meta.dirname, "dist");
+let DIST_DIR: string;
+
+// If the server is running from the 'dist' folder (i.e., it's the compiled JS)
+if (__dirname.endsWith(path.sep + 'dist')) {
+  DIST_DIR = __dirname;
+} else {
+  // If the server is running from the project root (i.e., original TS)
+  DIST_DIR = path.join(__dirname, "dist");
+}
 
 const server = new McpServer({
   name: "Wordly MCP App",
@@ -24,7 +39,7 @@ const server = new McpServer({
     "visualize_rewrites",
     {
       title: "Visualize Rewrites",
-      description: "Display rewritten variations of text to the user. Use this tool when the user asks for grammar checks, rewrites, or improvements. Provide the original text and a list of rewritten variations grouped by intent.",
+      description: "Display rewritten variations of text to the user. Use this tool when the user asks for grammar test, checks, rewrites, or improvements. Provide the original text and a list of rewritten variations grouped by intent.",
       inputSchema: z.object({
         original_text: z.string(),
         variations: z.array(
@@ -71,7 +86,7 @@ const server = new McpServer({
 if (process.argv.includes("--stdio")) {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("Grammar Checker MCP Server running on stdio");
+  console.info("Wordly MCP Server running on stdio");
 } else {
   const app = express();
   app.use(cors());
