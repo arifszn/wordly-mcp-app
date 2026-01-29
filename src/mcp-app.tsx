@@ -1,7 +1,7 @@
-import { useApp, useHostStyles } from "@modelcontextprotocol/ext-apps/react";
 import { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
 import styles from "./mcp-app.module.css";
+import { useApp, useHostStyles } from "@modelcontextprotocol/ext-apps/react";
 
 interface Variation {
   intent: string;
@@ -16,6 +16,7 @@ interface ToolInput {
 function GrammarApp() {
   const [data, setData] = useState<ToolInput | null>(null);
   const [selectedIntent, setSelectedIntent] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false); // New state for copy feedback
 
   const { app, error } = useApp({
     appInfo: { name: "Wordly", version: "1.0.0" },
@@ -45,6 +46,18 @@ function GrammarApp() {
 
   const currentVariation = data.variations.find(v => v.intent === selectedIntent) || data.variations[0];
 
+  const handleCopy = async () => {
+    if (currentVariation?.text) {
+      try {
+        await navigator.clipboard.writeText(currentVariation.text);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1000); // Reset "Copied!" message after 1 second
+      } catch (err) {
+        console.error('Failed to copy text: ', err);
+      }
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.sidebar}>
@@ -67,7 +80,14 @@ function GrammarApp() {
         <div className={styles.rewriteSection}>
            <h3 className={styles.heading}>{currentVariation?.intent || "Rewrite"}</h3>
            <div className={`${styles.textCard} ${styles.highlighted}`}>
-             {currentVariation?.text}
+             <span className={styles.rewrittenText}>{currentVariation?.text}</span>
+             <button onClick={handleCopy} className={styles.copyButton}>
+              {copied ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              )}
+            </button>
            </div>
         </div>
       </div>

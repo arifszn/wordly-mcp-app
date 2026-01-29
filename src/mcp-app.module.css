@@ -73,9 +73,10 @@
 }
 
 .rewriteSection .textCard {
+    display: flex;
+    align-items: center;
     color: var(--color-text-primary, #111827);
-    /* Mimic the diff look if we had a diff library, for now just clean text */
-    padding-left: 1rem;
+    padding: 1rem;
     border-left: 3px solid var(--color-accent, #2563eb);
 }
 
@@ -100,4 +101,27 @@
     color: var(--color-danger, #ef4444);
     padding: 2rem;
     text-align: center;
+}
+
+.rewrittenText {
+  flex-grow: 1; /* Allow text to take up available space */
+}
+
+.copyButton {
+  background: transparent;
+  border: none;
+  color: var(--color-text-tertiary, #9ca3af);
+  padding: 0.25rem;
+  cursor: pointer;
+  margin-left: 0.75rem; /* Add some space between text and button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-sm, 4px);
+  transition: all 0.2s ease-in-out;
+}
+
+.copyButton:hover {
+  background-color: var(--color-action-hover, #f3f4f6);
+  color: var(--color-text-secondary, #6b7280);
 }
