@@ -4,16 +4,6 @@ An MCP (Model Context Protocol) App that provides an interactive UI for visualiz
 
 <img width="1552" height="925" alt="image" src="https://github.com/user-attachments/assets/9c33fa9e-9661-4bde-a94d-5fa139d8cfef" />
 
-## Features
-
-- **Side-by-Side Comparison**: View original text alongside rewritten variations
-- **Intent-Based Rewrites**: Multiple rewrite styles (Fluency, Formal, Informal, Professional, Conversational, etc.)
-- **One-Click Copy**: Copy any rewritten variation to clipboard with visual feedback
-- **Adaptive Theming**: Seamlessly integrates with host application styles
-- **No Scrolling**: Full content display without scroll bars for optimal readability
-- **Interactive Selection**: Quickly switch between different rewrite intents
-- **Responsive Design**: Works across different screen sizes and contexts
-
 ## Configuration
 
 Add to your MCP client configuration:
