@@ -4,7 +4,7 @@ An MCP (Model Context Protocol) App that provides an interactive UI for visualiz
 
 This app showcases the mcp ui capabilities described in https://blog.modelcontextprotocol.io/posts/2026-01-26-mcp-apps/.
 
-<img width="1552" height="925" alt="image" src="https://github.com/user-attachments/assets/9c33fa9e-9661-4bde-a94d-5fa139d8cfef" />
+https://github.com/user-attachments/assets/f34d9d00-c8b4-4857-9bd9-709371783523
 
 ## Configuration
 
